@@ -117,7 +117,7 @@ pub use winit::event::VirtualKeyCode as KeyCode;
 
 bitflags::bitflags! {
     /// Bitflags describing the state of keyboard modifiers, such as `Control` or `Shift`.
-    #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+    #[derive(Debug, Default, Clone, Copy, PartialEq, Eq, Hash)]
     pub struct KeyMods: u8 {
         /// No modifiers; equivalent to `KeyMods::default()` and
         /// [`KeyMods::empty()`](struct.KeyMods.html#method.empty).
@@ -153,7 +153,7 @@ impl From<ModifiersState> for KeyMods {
 }
 
 /// A simple wrapper bundling the four properties of a keyboard stroke.
-#[derive(Copy, Clone, Debug)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub struct KeyInput {
     /// The scancode. For more info on what they are and when to use them refer to the
     /// [`keyboard`](crate::input::keyboard) module.
